@@ -1,0 +1,3582 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Vi Sim Ótica — Veja do seu jeito</title>
+
+<meta name="description" content="Vi Sim Ótica. Encontre o modelo que combina com você e faça seu orçamento pelo WhatsApp.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+
+<style>
+
+/* =========================================================
+   BASE
+========================================================= */
+
+:root {
+
+    --navy: #19304F;
+    --navy-dark: #0C1624;
+    --blue: #315B87;
+
+    --black: #080B0F;
+    --white: #FFFFFF;
+
+    --gray: #A7AFB8;
+    --line: rgba(255,255,255,.12);
+
+    --max: 1440px;
+
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    background: var(--black);
+
+    color: var(--white);
+
+    font-family: "DM Sans", sans-serif;
+
+    overflow-x: hidden;
+
+}
+
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+button {
+    font-family: inherit;
+}
+
+
+img {
+    display: block;
+    width: 100%;
+}
+
+
+/* =========================================================
+   CURSOR
+========================================================= */
+
+.cursor {
+
+    position: fixed;
+
+    width: 12px;
+    height: 12px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    pointer-events: none;
+
+    z-index: 9999;
+
+    transform: translate(-50%, -50%);
+
+    mix-blend-mode: difference;
+
+    transition:
+        width .25s,
+        height .25s;
+
+}
+
+
+.cursor.big {
+
+    width: 55px;
+    height: 55px;
+
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+header {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    z-index: 1000;
+
+    padding: 24px 40px;
+
+    transition: .4s;
+
+}
+
+
+header.scrolled {
+
+    padding: 15px 40px;
+
+    background: rgba(8,11,15,.82);
+
+    backdrop-filter: blur(18px);
+
+    border-bottom: 1px solid var(--line);
+
+}
+
+
+.header-inner {
+
+    max-width: var(--max);
+
+    margin: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+}
+
+
+.logo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    font-family: "Manrope", sans-serif;
+
+    font-weight: 800;
+
+    font-size: 22px;
+
+    letter-spacing: -1px;
+
+}
+
+.logo img {
+    width: 120px;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+
+.logo-symbol {
+
+    width: 32px;
+    height: 32px;
+
+    border: 2px solid white;
+
+    border-radius: 50%;
+
+    position: relative;
+
+}
+
+
+.logo-symbol::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 17px;
+    height: 7px;
+
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+
+    left: 5px;
+    top: 10px;
+
+}
+
+
+.header-center {
+
+    display: flex;
+
+    gap: 38px;
+
+    font-size: 12px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1.5px;
+
+}
+
+
+.header-center a {
+
+    color: rgba(255,255,255,.65);
+
+    transition: .3s;
+
+}
+
+
+.header-center a:hover {
+
+    color: white;
+
+}
+
+
+.header-contact {
+
+    padding: 11px 19px;
+
+    border: 1px solid rgba(255,255,255,.25);
+
+    border-radius: 100px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+    transition: .3s;
+
+}
+
+
+.header-contact:hover {
+
+    background: white;
+
+    color: var(--black);
+
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+
+    min-height: 100vh;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    overflow: hidden;
+
+    background:
+
+        radial-gradient(
+            circle at 70% 45%,
+            rgba(25,48,79,.75),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 15% 90%,
+            rgba(25,48,79,.28),
+            transparent 25%
+        ),
+
+        var(--black);
+
+}
+
+
+/* linhas decorativas */
+
+.hero-lines {
+    display: none;
+}
+
+
+/* conteúdo */
+
+.hero-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: min(calc(100% - 80px), var(--max));
+
+    margin: auto;
+
+}
+
+
+.hero-topline {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 25px;
+
+    color: #91A7BE;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+
+}
+
+
+.hero-topline span {
+
+    width: 35px;
+
+    height: 1px;
+
+    background: var(--blue);
+
+}
+
+
+.hero-title {
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: clamp(60px, 25vw, 160px);
+
+    font-weight: 800;
+
+    line-height: .78;
+
+    letter-spacing: -11px;
+
+    text-transform: uppercase;
+
+}
+
+
+.hero-title .outline {
+
+    color: transparent;
+
+    -webkit-text-stroke: 1px rgba(255,255,255,.65);
+
+}
+
+
+.hero-title .blue {
+
+    color: #5279A1;
+
+}
+
+
+/* texto lateral */
+
+.hero-description {
+
+    position: absolute;
+
+    right: 0;
+
+    bottom: 40px;
+
+    width: 280px;
+
+    color: var(--gray);
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+}
+
+
+/* =========================================================
+   HERO ÓCULOS
+========================================================= */
+
+.hero-glasses {
+
+    position: absolute;
+
+    z-index: 3;
+
+    width: min(43vw, 620px);
+
+    height: 330px;
+
+    left: 80%;
+
+    top: 52%;
+
+    transform: translate(-50%, -50%);
+
+    transition: transform .15s ease-out;
+
+}
+
+
+.hero-glasses img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: contain;
+
+    filter:
+
+        drop-shadow(0 35px 35px rgba(0,0,0,.55));
+
+}
+
+/* =========================================================
+   GALERIA DO HERO
+========================================================= */
+
+.hero-gallery {
+    position: absolute;
+    z-index: 3;
+
+    width: min(22vw, 320px);
+    aspect-ratio: 9 / 16;
+    height: auto;
+
+    right: 5%;
+    top: 60%;
+
+    transform: translateY(-50%);
+
+    overflow: hidden;
+
+    border-radius: 18px;
+
+    background: #101820;
+}
+
+.hero-slide {
+    position: absolute;
+
+    inset: 0;
+
+    opacity: 0;
+
+    transition: opacity 1s ease;
+}
+
+.hero-slide.active {
+    opacity: 1;
+}
+
+.hero-slide img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+
+
+
+.hero-product-tag {
+
+    position: absolute;
+
+    right: 4%;
+
+    top: 18%;
+
+    z-index: 5;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+
+    padding: 14px 17px;
+
+    background: rgba(255,255,255,.08);
+
+    backdrop-filter: blur(15px);
+
+    border: 1px solid rgba(255,255,255,.12);
+
+}
+
+
+.hero-product-tag small {
+
+    color: #8EA2B7;
+
+    font-size: 9px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+}
+
+
+.hero-product-tag strong {
+
+    font-size: 13px;
+
+}
+
+
+/* =========================================================
+   HERO BOTTOM
+========================================================= */
+
+.hero-bottom {
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: 35px;
+
+    width: 100%;
+
+    padding: 0 40px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+
+.scroll-text {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    color: #78828C;
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+
+}
+
+
+.scroll-line {
+
+    width: 55px;
+
+    height: 1px;
+
+    background: #78828C;
+
+}
+
+
+.hero-number {
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: 11px;
+
+    color: #78828C;
+
+}
+
+
+/* =========================================================
+   ESCOLHA
+========================================================= */
+
+.choice {
+
+    position: relative;
+
+    min-height: 100vh;
+
+    padding: 150px 40px;
+
+    background: #F2F3F4;
+
+    color: var(--black);
+
+}
+
+
+.choice-inner {
+
+    max-width: var(--max);
+
+    margin: auto;
+
+}
+
+
+.choice-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-end;
+
+    margin-bottom: 70px;
+
+}
+
+
+.choice-kicker {
+
+    color: var(--navy);
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+}
+
+
+.choice-title {
+
+    margin-top: 15px;
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: clamp(50px, 7vw, 100px);
+
+    line-height: .85;
+
+    letter-spacing: -6px;
+
+}
+
+
+.choice-description {
+
+    width: 300px;
+
+    color: #69727A;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+}
+
+
+/* =========================================================
+   ESCOLHA CARDS
+========================================================= */
+
+.choice-grid {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 20px;
+
+}
+
+
+.choice-card {
+
+    position: relative;
+
+    height: 580px;
+
+    overflow: hidden;
+
+    background: var(--navy);
+
+    color: white;
+
+    cursor: pointer;
+
+}
+
+
+.choice-card:nth-child(2) {
+
+    background: #101820;
+
+}
+
+
+.choice-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+
+        linear-gradient(
+            to top,
+            rgba(0,0,0,.75),
+            transparent 55%
+        );
+
+}
+
+
+.choice-card-image {
+
+    position: absolute;
+
+    inset: 0;
+
+}
+
+
+.choice-card-image img {
+
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform .8s ease;
+
+}
+
+
+.choice-card:hover img {
+
+    transform: scale(1.07);
+
+}
+
+
+.choice-card-content {
+
+    position: absolute;
+
+    z-index: 2;
+
+    left: 35px;
+
+    right: 35px;
+
+    bottom: 35px;
+
+}
+
+
+.choice-card-number {
+
+    color: #9AB0C7;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+}
+
+
+.choice-card h3 {
+
+    margin-top: 10px;
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: 65px;
+
+    letter-spacing: -4px;
+
+}
+
+
+.choice-card p {
+
+    max-width: 270px;
+
+    margin-top: 12px;
+
+    color: rgba(255,255,255,.65);
+
+    font-size: 12px;
+
+}
+
+
+.choice-card-button {
+
+    position: absolute;
+
+    right: 35px;
+
+    bottom: 35px;
+
+    width: 54px;
+
+    height: 54px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: white;
+
+    color: var(--black);
+
+    font-size: 20px;
+
+    transition: .3s;
+
+}
+
+
+.choice-card:hover .choice-card-button {
+
+    transform: rotate(-45deg);
+
+}
+
+
+/* =========================================================
+   COLEÇÃO
+========================================================= */
+
+.collection {
+
+    padding: 150px 40px;
+
+    background: var(--black);
+
+}
+
+
+.collection-inner {
+
+    max-width: var(--max);
+
+    margin: auto;
+
+}
+
+
+.collection-top {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-end;
+
+    margin-bottom: 70px;
+
+}
+
+
+.collection-title {
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: clamp(55px, 8vw, 110px);
+
+    line-height: .8;
+
+    letter-spacing: -7px;
+
+}
+
+
+.collection-title span {
+
+    color: #5279A1;
+
+}
+
+
+.collection-description {
+
+    width: 300px;
+
+    color: var(--gray);
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+}
+
+
+/* =========================================================
+   PRODUTOS
+========================================================= */
+
+.products {
+
+    display: grid;
+
+    grid-template-columns: repeat(12, 1fr);
+
+    gap: 18px;
+
+}
+
+
+.product {
+
+    position: relative;
+
+    overflow: hidden;
+
+    background: #111820;
+
+    cursor: pointer;
+
+}
+
+
+.product:nth-child(1) {
+
+    grid-column: span 7;
+
+    height: 600px;
+
+}
+
+
+.product:nth-child(2) {
+
+    grid-column: span 5;
+
+    height: 600px;
+
+}
+
+
+.product:nth-child(3) {
+
+    grid-column: span 4;
+
+    height: 450px;
+
+}
+
+
+.product:nth-child(4) {
+
+    grid-column: span 4;
+
+    height: 450px;
+
+}
+
+
+.product:nth-child(5) {
+
+    grid-column: span 4;
+
+    height: 450px;
+
+}
+
+
+.product-image {
+
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            #19304F,
+            #0D131A 68%
+        );
+
+}
+
+
+.product-image img {
+
+    width: 85%;
+
+    height: 75%;
+
+    object-fit: contain;
+
+    transition: .7s cubic-bezier(.2,.8,.2,1);
+
+    filter: drop-shadow(0 30px 25px rgba(0,0,0,.5));
+
+}
+
+
+.product:hover .product-image img {
+
+    transform: scale(1.1) rotate(-2deg);
+
+}
+
+
+.product-info {
+
+    position: absolute;
+
+    z-index: 3;
+
+    left: 22px;
+
+    right: 22px;
+
+    bottom: 22px;
+
+    padding: 20px;
+
+    background: rgba(8,11,15,.76);
+
+    backdrop-filter: blur(14px);
+
+    border: 1px solid rgba(255,255,255,.10);
+
+}
+
+
+.product-category {
+
+    color: #8299B0;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1.5px;
+
+}
+
+
+.product-name {
+
+    margin-top: 5px;
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: 22px;
+
+    font-weight: 700;
+
+}
+
+
+.product-info-bottom {
+
+    margin-top: 15px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+
+.product-style {
+
+    color: #7E8993;
+
+    font-size: 11px;
+
+}
+
+
+.product-arrow {
+
+    width: 38px;
+
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--navy);
+
+    transition: .3s;
+
+}
+
+
+.product:hover .product-arrow {
+
+    transform: rotate(-45deg);
+
+    background: var(--blue);
+
+}
+
+
+/* =========================================================
+   CARROSSEL DA COLEÇÃO
+========================================================= */
+
+.products-carousel {
+    position: relative;
+    width: 100%;
+}
+
+
+/* SETAS — ESCONDIDAS NO DESKTOP */
+
+.products-arrow {
+    display: none;
+}
+
+
+/* =========================================================
+   MANIFESTO
+========================================================= */
+
+.manifesto {
+
+    min-height: 90vh;
+
+    padding: 150px 40px;
+
+    display: flex;
+
+    align-items: center;
+
+    background:
+
+        linear-gradient(
+            120deg,
+            #0C1624,
+            #19304F
+        );
+
+}
+
+
+.manifesto-inner {
+
+    width: min(1100px, 100%);
+
+    margin: auto;
+
+}
+
+
+.manifesto-small {
+
+    margin-bottom: 30px;
+
+    color: #A7BBD0;
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+
+}
+
+
+.manifesto h2 {
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: clamp(55px, 9vw, 130px);
+
+    line-height: .85;
+
+    letter-spacing: -8px;
+
+}
+
+
+.manifesto h2 span {
+
+    color: #8EA8C2;
+
+}
+
+
+.manifesto-bottom {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-end;
+
+    margin-top: 70px;
+
+}
+
+
+.manifesto-bottom p {
+
+    width: 380px;
+
+    color: rgba(255,255,255,.62);
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+}
+
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.final {
+
+    min-height: 80vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 100px 30px;
+
+    background: #F2F3F4;
+
+    color: var(--black);
+
+}
+
+
+.final-inner {
+
+    max-width: 1000px;
+
+}
+
+
+.final-small {
+
+    color: var(--navy);
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+
+}
+
+
+.final h2 {
+
+    margin-top: 20px;
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: clamp(55px, 9vw, 130px);
+
+    line-height: .8;
+
+    letter-spacing: -8px;
+
+}
+
+
+.final h2 span {
+
+    color: var(--navy);
+
+}
+
+
+.final p {
+
+    max-width: 420px;
+
+    margin: 35px auto;
+
+    color: #69727A;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+}
+
+
+.whatsapp-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 17px 27px;
+
+    border-radius: 100px;
+
+    background: var(--navy);
+
+    color: white;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+    transition: .3s;
+
+}
+
+
+.whatsapp-button:hover {
+
+    background: #315B87;
+
+    transform: translateY(-3px);
+
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+
+    padding: 25px 40px;
+
+    background: #07090C;
+
+    border-top: 1px solid var(--line);
+
+}
+
+
+.footer-inner {
+
+    max-width: var(--max);
+
+    margin: auto;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+
+.footer-copy {
+
+    color: #606A74;
+
+    font-size: 10px;
+
+}
+
+
+.footer-links {
+
+    display: flex;
+
+    gap: 25px;
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 5000;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 25px;
+
+    background: rgba(0,0,0,.75);
+
+    backdrop-filter: blur(18px);
+
+}
+
+
+.modal.active {
+
+    display: flex;
+
+}
+
+
+.modal-box {
+
+    width: min(900px, 100%);
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    background: #101820;
+
+    border: 1px solid rgba(255,255,255,.12);
+
+}
+
+
+.modal-image {
+
+    min-height: 500px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+
+        radial-gradient(
+            circle,
+            #19304F,
+            #0C1014
+        );
+
+}
+
+
+.modal-image img {
+
+    width: 85%;
+
+    height: 70%;
+
+    object-fit: contain;
+
+}
+
+
+.modal-content {
+
+    padding: 60px 45px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+}
+
+
+.modal-close {
+
+    position: absolute;
+
+    top: 30px;
+
+    right: 30px;
+
+    width: 45px;
+
+    height: 45px;
+
+    border: 1px solid rgba(255,255,255,.2);
+
+    border-radius: 50%;
+
+    background: rgba(0,0,0,.3);
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 20px;
+
+}
+
+
+.modal-category {
+
+    color: #8EA8C2;
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+
+}
+
+
+.modal-content h2 {
+
+    margin-top: 10px;
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: 50px;
+
+    line-height: .9;
+
+}
+
+
+.modal-content p {
+
+    margin-top: 25px;
+
+    color: var(--gray);
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width: 900px) {
+
+/* =========================================================
+   RESPONSIVIDADE — TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    header {
+        padding: 20px 25px;
+    }
+
+    header.scrolled {
+        padding: 14px 25px;
+    }
+
+    .header-center {
+        gap: 20px;
+    }
+
+    .hero-content {
+        width: calc(100% - 50px);
+    }
+
+    .hero-gallery {
+        right: 25px;
+        width: min(25vw, 280px);
+    }
+
+    .choice,
+    .collection,
+    .manifesto,
+    .final {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+    footer {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE — MOBILE
+========================================================= */
+
+@media (max-width: 900px) {
+
+
+    html {
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    body {
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    header {
+        padding: 18px 20px;
+    }
+
+    header.scrolled {
+        padding: 13px 20px;
+    }
+
+    .header-inner {
+        width: 100%;
+    }
+
+    .logo img {
+        width: 95px;
+    }
+
+    .header-center {
+        display: none;
+    }
+
+    .header-contact {
+        padding: 9px 13px;
+        font-size: 9px;
+        letter-spacing: .8px;
+        white-space: nowrap;
+    }
+
+
+    /* =========================================================
+   COLEÇÃO — CARROSSEL SOMENTE MOBILE
+========================================================= */
+
+.products-carousel {
+    position: relative;
+    width: 100%;
+}
+
+.products {
+    display: flex !important;
+
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+
+    width: 100%;
+
+    gap: 16px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+}
+
+.products::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* CADA PRODUTO VIRA UM SLIDE */
+
+.products .product {
+    flex: 0 0 calc(100vw - 55px) !important;
+
+    width: calc(100vw - 55px) !important;
+
+    min-width: calc(100vw - 55px) !important;
+
+    height: 470px !important;
+
+    margin: 0 !important;
+
+    scroll-snap-align: center;
+}
+
+
+/* SETAS */
+
+.products-arrow {
+    display: flex;
+
+    position: absolute;
+
+    top: 50%;
+    transform: translateY(-50%);
+
+    z-index: 50;
+
+    width: 42px;
+    height: 42px;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(255,255,255,.25);
+
+    border-radius: 50%;
+
+    background: rgba(8,11,15,.9);
+
+    color: #fff;
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(10px);
+}
+
+.products-arrow-prev {
+    left: 5px;
+}
+
+.products-arrow-next {
+    right: 5px;
+}
+
+.products-arrow:active {
+    transform: translateY(-50%) scale(.92);
+}
+
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+        min-height: 100svh;
+        height: auto;
+        padding: 110px 20px 80px;
+
+        display: block;
+
+        overflow: hidden;
+    }
+
+    .hero-content {
+        width: 100%;
+        margin: 0;
+    }
+
+    .hero-topline {
+        margin-bottom: 25px;
+        gap: 10px;
+        font-size: 9px;
+        letter-spacing: 1.5px;
+    }
+
+    .hero-topline span {
+        width: 25px;
+    }
+
+    .hero-title {
+        font-size: clamp(54px, 17vw, 82px);
+        line-height: .84;
+        letter-spacing: -5px;
+
+        position: relative;
+        z-index: 2;
+    }
+
+    .hero-title .outline {
+        -webkit-text-stroke: 1px rgba(255,255,255,.65);
+    }
+
+    .hero-title .blue {
+        color: #5279A1;
+    }
+
+
+    /* =========================
+       GALERIA DO HERO
+    ========================= */
+
+.hero-gallery {
+    position: relative;
+
+    width: 100%;
+    max-width: none;
+    height: auto;
+
+    aspect-ratio: 4 / 5;
+
+    top: auto;
+    right: auto;
+
+    transform: none;
+
+    margin: 45px auto 0;
+
+    border-radius: 15px;
+
+    overflow: hidden;
+
+    z-index: 3;
+}
+
+    .hero-slide {
+        position: absolute;
+        inset: 0;
+    }
+
+    .hero-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+
+    /* =========================
+       ELEMENTOS ANTIGOS DO HERO
+    ========================= */
+
+    .hero-glasses {
+        display: none;
+    }
+
+    .hero-description {
+        display: none;
+    }
+
+    .hero-product-tag {
+        display: none;
+    }
+
+
+    /* =========================
+       HERO — RODAPÉ
+    ========================= */
+
+    .hero-bottom {
+        position: absolute;
+
+        left: 0;
+        bottom: 22px;
+
+        width: 100%;
+
+        padding: 0 20px;
+    }
+
+    .scroll-text {
+        font-size: 8px;
+        letter-spacing: 1.5px;
+    }
+
+    .scroll-line {
+        width: 35px;
+    }
+
+
+    /* =========================
+       CHOICE
+    ========================= */
+
+    .choice {
+        min-height: auto;
+
+        padding: 90px 20px;
+    }
+
+    .choice-header {
+        display: block;
+    }
+
+    .choice-title {
+        font-size: clamp(48px, 14vw, 72px);
+        line-height: .9;
+        letter-spacing: -4px;
+    }
+
+    .choice-description {
+        width: auto;
+
+        margin-top: 25px;
+
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+    .choice-grid {
+        grid-template-columns: 1fr;
+
+        gap: 15px;
+
+        margin-top: 50px;
+    }
+
+    .choice-card {
+        width: 100%;
+        height: 420px;
+    }
+
+    .choice-card h3 {
+        font-size: clamp(42px, 12vw, 60px);
+    }
+
+
+    /* =========================
+       COLLECTION
+    ========================= */
+
+    .collection {
+        padding: 90px 20px;
+    }
+
+    .collection-top {
+        display: block;
+    }
+
+    .collection-title {
+        font-size: clamp(48px, 14vw, 72px);
+        line-height: .9;
+        letter-spacing: -4px;
+    }
+
+    .collection-description {
+        width: auto;
+
+        margin-top: 25px;
+
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+/* =========================================================
+   COLEÇÃO — CARROSSEL MOBILE
+========================================================= */
+
+.products {
+    display: flex !important;
+
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+
+    grid-template-columns: none !important;
+    grid-template-rows: none !important;
+
+    width: calc(100% + 20px);
+
+    gap: 16px;
+
+    margin-top: 45px;
+
+    overflow-x: auto !important;
+    overflow-y: hidden;
+
+    padding: 0 20px 15px 0;
+
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    -webkit-overflow-scrolling: touch;
+}
+
+.products::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* TODOS OS CARDS */
+
+.products .product {
+    flex: 0 0 calc(100vw - 40px) !important;
+
+    width: calc(100vw - 40px) !important;
+
+    min-width: calc(100vw - 40px) !important;
+    max-width: calc(100vw - 40px) !important;
+
+    height: 430px !important;
+
+    grid-column: auto !important;
+    grid-row: auto !important;
+
+    margin: 0 !important;
+
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+}
+
+
+    /* =========================
+       MANIFESTO
+    ========================= */
+
+    .manifesto {
+        min-height: auto;
+
+        padding: 100px 20px;
+    }
+
+    .manifesto h2 {
+        font-size: clamp(48px, 15vw, 80px);
+
+        line-height: .88;
+
+        letter-spacing: -5px;
+    }
+
+    .manifesto-bottom {
+        display: block;
+
+        margin-top: 50px;
+    }
+
+    .manifesto-bottom p {
+        width: auto;
+
+        margin-top: 30px;
+
+        font-size: 13px;
+        line-height: 1.7;
+    }
+
+#manifestoWhatsapp {
+    display: flex;
+    width: fit-content;
+
+    margin-top: 30px;
+    margin-left: 0 !important;
+    margin-right: auto !important;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #FFFFFF !important;
+    color: #19304F !important;
+}
+
+    /* =========================
+       CTA FINAL
+    ========================= */
+
+    .final {
+        min-height: auto;
+
+        padding: 100px 20px;
+    }
+
+    .final h2 {
+        font-size: clamp(52px, 16vw, 86px);
+
+        line-height: .86;
+
+        letter-spacing: -5px;
+    }
+
+    /* =========================================================
+   CTA FINAL — MOBILE
+========================================================= */
+
+.final {
+    text-align: left;
+}
+
+.final-inner {
+    width: 100%;
+    margin: 0;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.final-small {
+    text-align: left;
+}
+
+.final h2 {
+    text-align: left;
+}
+
+.final p {
+    text-align: left;
+}
+
+#finalWhatsapp {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+footer {
+    padding: 25px 20px;
+    text-align: center;
+}
+
+.footer-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+}
+
+.footer-links {
+    margin-top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+
+
+    /* =========================
+       MODAL
+    ========================= */
+
+    .modal-box {
+        width: calc(100% - 30px);
+
+        grid-template-columns: 1fr;
+    }
+
+    .modal-image {
+        min-height: 280px;
+    }
+
+    .modal-content {
+        padding: 30px 25px;
+    }
+
+    .modal-content h2 {
+        font-size: 38px;
+        line-height: .95;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE — CELULARES PEQUENOS
+========================================================= */
+
+@media (max-width: 600px) {
+
+    /* HEADER */
+
+    header {
+        padding: 16px 16px;
+    }
+
+    header.scrolled {
+        padding: 12px 16px;
+    }
+
+    .logo img {
+        width: 90px;
+    }
+
+    .header-contact {
+        padding: 8px 11px;
+        font-size: 8px;
+    }
+
+
+    /* HERO */
+
+    .hero {
+        padding: 100px 16px 75px;
+    }
+
+    .hero-title {
+        font-size: 16.5vw;
+        letter-spacing: -4px;
+    }
+    
+.hero-gallery {
+    width: 100%;
+    max-width: none;
+
+    aspect-ratio: 4 / 5;
+
+    margin-top: 40px;
+}
+
+    .hero-bottom {
+        padding: 0 16px;
+    }
+
+
+    /* CHOICE */
+
+    .choice {
+        padding: 75px 16px;
+    }
+
+    .choice-grid {
+        margin-top: 40px;
+    }
+
+    .choice-card {
+        height: 380px;
+    }
+
+
+    /* COLLECTION */
+
+    .collection {
+        padding: 75px 16px;
+    }
+
+.product {
+    flex: 0 0 calc(100vw - 40px);
+
+    width: calc(100vw - 40px);
+
+    height: 430px !important;
+
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+}
+
+
+    /* MANIFESTO */
+
+    .manifesto {
+        padding: 80px 16px;
+    }
+
+
+    /* CTA */
+
+    .final {
+        padding: 80px 16px;
+    }
+
+
+    /* FOOTER */
+
+@media (max-width: 600px) {
+
+    footer {
+        padding: 25px 16px;
+        text-align: center;
+    }
+
+    .footer-inner {
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-links {
+        justify-content: center;
+        align-items: center;
+    }
+
+}
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     CURSOR
+========================================================= -->
+
+<div class="cursor"></div>
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header id="header">
+
+    <div class="header-inner">
+
+<a href="#" class="logo">
+    <img src="logo.jpg" alt="Vi Sim Ótica">
+</a>
+
+
+        <nav class="header-center">
+
+            <a href="#escolha">Escolha</a>
+
+            <a href="#colecao">Coleção</a>
+
+            <a href="#marca">A Vi Sim</a>
+
+        </nav>
+
+
+        <a
+            href="#"
+            id="headerWhatsapp"
+            class="header-contact"
+            target="_blank"
+        >
+
+            Falar com a Vi Sim
+
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="hero">
+
+
+    <div class="hero-lines"></div>
+
+
+    <div class="hero-content">
+
+
+        <h1 class="hero-title">
+
+            <div>VEJA</div>
+
+            <div class="outline">DIFERENTE.</div>
+
+            <div class="blue">SEJA.</div>
+
+        </h1>
+
+
+<div class="hero-gallery" id="heroGallery">
+
+    <div class="hero-slide active">
+        <img src="oculos-cabecario.jpg" alt="Vi Sim Ótica">
+    </div>
+
+    <div class="hero-slide">
+        <img src="oculos-cabecario2.jpg" alt="Vi Sim Ótica">
+    </div>
+
+    <div class="hero-slide">
+        <img src="oculos-cabecario3.jpg" alt="Vi Sim Ótica">
+    </div>
+
+    <div class="hero-slide">
+        <img src="oculos-cabecario4.jpg" alt="Vi Sim Ótica">
+    </div>
+
+</div>
+
+    </div>
+
+
+    <div class="hero-bottom">
+
+        <div class="scroll-text">
+
+            <span class="scroll-line"></span>
+
+            role para descobrir
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+<!-- =========================================================
+     ESCOLHA
+========================================================= -->
+
+<section class="choice" id="escolha">
+
+
+    <div class="choice-inner">
+
+
+        <div class="choice-header">
+
+
+            <div>
+
+                <div class="choice-kicker">
+
+                    Comece por aqui
+
+                </div>
+
+
+                <h2 class="choice-title">
+
+                    O que você<br>
+
+                    procura?
+
+                </h2>
+
+            </div>
+
+
+            <p class="choice-description">
+
+                Encontre a categoria que mais
+                combina com o que você procura
+                e descubra os modelos da Vi Sim.
+
+            </p>
+
+
+        </div>
+
+
+        <div class="choice-grid">
+
+
+            <a
+                href="#colecao"
+                class="choice-card"
+                data-category="grau"
+            >
+
+                <div class="choice-card-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1577803645773-f96470509666?auto=format&fit=crop&w=1000&q=90"
+                        alt="Óculos de grau"
+                    >
+
+                </div>
+
+
+                <div class="choice-card-content">
+
+
+                    <h3>
+
+                        Grau
+
+                    </h3>
+
+
+                    <p>
+
+                        Modelos para acompanhar
+                        você todos os dias.
+
+                    </p>
+
+                </div>
+
+
+                <div class="choice-card-button">
+
+                    →
+
+                </div>
+
+            </a>
+
+
+            <a
+                href="#colecao"
+                class="choice-card"
+                data-category="sol"
+            >
+
+                <div class="choice-card-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=1000&q=90"
+                        alt="Óculos de sol"
+                    >
+
+                </div>
+
+
+                <div class="choice-card-content">
+
+                    <span class="choice-card-number">
+
+                        02 / SOL
+
+                    </span>
+
+
+                    <h3>
+
+                        Sol
+
+                    </h3>
+
+
+                    <p>
+
+                        Proteção e personalidade
+                        em uma única escolha.
+
+                    </p>
+
+                </div>
+
+
+                <div class="choice-card-button">
+
+                    →
+
+                </div>
+
+            </a>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     COLEÇÃO
+========================================================= -->
+
+<section class="collection" id="colecao">
+
+
+    <div class="collection-inner">
+
+
+        <div class="collection-top">
+
+
+            <div>
+
+                <h2 class="collection-title">
+
+                    ESCOLHA<br>
+
+                    <span>O SEU.</span>
+
+                </h2>
+
+            </div>
+
+
+            <p class="collection-description">
+
+                Uma seleção de modelos para
+                diferentes estilos, rostos e
+                personalidades.
+
+                <br><br>
+
+                Gostou de algum?
+                É só chamar no WhatsApp.
+
+            </p>
+
+
+        </div>
+
+
+        <div class="products-carousel">
+    
+    <button class="products-arrow products-arrow-prev" type="button">
+        ←
+    </button>
+    
+    <div class="products" id="products">           
+
+
+            <!-- PRODUTO 01 -->
+
+            <article
+                class="product"
+                data-name="AURA"
+                data-code="VS 001"
+                data-category="Óculos de Grau"
+                data-description="Uma armação elegante e versátil para quem procura um visual sofisticado."
+            >
+
+                <div class="product-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1577803645773-f96470509666?auto=format&fit=crop&w=1200&q=90"
+                        alt="Modelo Aura"
+                    >
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <div class="product-category">
+
+                        Óculos de Grau
+
+                    </div>
+
+
+                    <div class="product-name">
+
+                        AURA
+
+                    </div>
+
+
+                    <div class="product-info-bottom">
+
+                        <div class="product-style">
+
+                            Clássico · VS 001
+
+                        </div>
+
+
+                        <div class="product-arrow">
+
+                            →
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- PRODUTO 02 -->
+
+            <article
+                class="product"
+                data-name="LINE"
+                data-code="VS 002"
+                data-category="Óculos de Sol"
+                data-description="Linhas modernas para quem gosta de personalidade e presença."
+            >
+
+                <div class="product-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=1200&q=90"
+                        alt="Modelo Line"
+                    >
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <div class="product-category">
+
+                        Óculos de Sol
+
+                    </div>
+
+
+                    <div class="product-name">
+
+                        LINE
+
+                    </div>
+
+
+                    <div class="product-info-bottom">
+
+                        <div class="product-style">
+
+                            Moderno · VS 002
+
+                        </div>
+
+
+                        <div class="product-arrow">
+
+                            →
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- PRODUTO 03 -->
+
+            <article
+                class="product"
+                data-name="FORMA"
+                data-code="VS 003"
+                data-category="Óculos de Grau"
+                data-description="Design contemporâneo para transformar o visual."
+            >
+
+                <div class="product-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1508296695146-257a814070b4?auto=format&fit=crop&w=1000&q=90"
+                        alt="Modelo Forma"
+                    >
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <div class="product-category">
+
+                        Óculos de Grau
+
+                    </div>
+
+
+                    <div class="product-name">
+
+                        FORMA
+
+                    </div>
+
+
+                    <div class="product-info-bottom">
+
+                        <div class="product-style">
+
+                            Moderno · VS 003
+
+                        </div>
+
+
+                        <div class="product-arrow">
+
+                            →
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- PRODUTO 04 -->
+
+            <article
+                class="product"
+                data-name="BOLD"
+                data-code="VS 004"
+                data-category="Óculos de Sol"
+                data-description="Uma armação marcante para quem não passa despercebido."
+            >
+
+                <div class="product-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1534030347209-467a5b0ad3e6?auto=format&fit=crop&w=1000&q=90"
+                        alt="Modelo Bold"
+                    >
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <div class="product-category">
+
+                        Óculos de Sol
+
+                    </div>
+
+
+                    <div class="product-name">
+
+                        BOLD
+
+                    </div>
+
+
+                    <div class="product-info-bottom">
+
+                        <div class="product-style">
+
+                            Marcante · VS 004
+
+                        </div>
+
+
+                        <div class="product-arrow">
+
+                            →
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- PRODUTO 05 -->
+
+            <article
+                class="product"
+                data-name="ESSENCE"
+                data-code="VS 005"
+                data-category="Óculos de Grau"
+                data-description="Leve, elegante e fácil de combinar."
+            >
+
+                <div class="product-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1556306535-38febf6782e7?auto=format&fit=crop&w=1000&q=90"
+                        alt="Modelo Essence"
+                    >
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <div class="product-category">
+
+                        Óculos de Grau
+
+                    </div>
+
+
+                    <div class="product-name">
+
+                        ESSENCE
+
+                    </div>
+
+
+                    <div class="product-info-bottom">
+
+                        <div class="product-style">
+
+                            Delicado · VS 005
+
+                        </div>
+
+
+                        <div class="product-arrow">
+
+                            →
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+</article>
+
+    </div>
+
+    <button
+        class="products-arrow products-arrow-next"
+        type="button"
+    >
+        →
+    </button>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     CTA FINAL
+========================================================= -->
+
+<section class="final">
+
+
+    <div class="final-inner">
+
+
+        <div class="final-small">
+
+            Seu próximo modelo está aqui
+
+        </div>
+
+
+        <h2>
+
+            QUAL VAI<br>
+
+            SER O <span>SEU?</span>
+
+        </h2>
+
+
+        <p>
+
+            Viu um modelo que combina com você?
+            Envie uma mensagem para a Vi Sim,
+            consulte disponibilidade e faça seu orçamento.
+
+        </p>
+
+
+        <a
+            href="#"
+            class="whatsapp-button"
+            id="finalWhatsapp"
+        >
+
+            Quero meu orçamento
+
+            →
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+    <div class="footer-inner">
+
+        <div class="footer-copy">
+
+            © 2026 Vi Sim Ótica
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="https://www.instagram.com/visimotica/" target="_blank">
+
+                Instagram
+
+            </a>
+
+
+            <a href="#" id="footerWhatsapp">
+
+                WhatsApp
+
+            </a>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- =========================================================
+     MODAL
+========================================================= -->
+
+<div class="modal" id="modal">
+
+
+    <button
+        class="modal-close"
+        id="modalClose"
+    >
+
+        ×
+
+    </button>
+
+
+    <div class="modal-box">
+
+
+        <div class="modal-image">
+
+            <img
+                id="modalImage"
+                src=""
+                alt=""
+            >
+
+        </div>
+
+
+        <div class="modal-content">
+
+            <div
+                class="modal-category"
+                id="modalCategory"
+            >
+
+                ÓCULOS
+
+            </div>
+
+
+            <h2 id="modalTitle">
+
+                AURA
+
+            </h2>
+
+
+            <p id="modalDescription">
+
+            </p>
+
+
+            <br>
+
+
+            <a
+                href="#"
+                id="modalWhatsapp"
+                class="whatsapp-button"
+                target="_blank"
+            >
+
+                Quero esse modelo →
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   WHATSAPP
+========================================================= */
+
+/*
+    TROQUE PELO NÚMERO REAL DA VI SIM.
+
+    Exemplo:
+    5517991234567
+*/
+
+const WHATSAPP = "5517999999999";
+
+
+function whatsapp(message) {
+
+    return `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(message)}`;
+
+}
+
+
+const generalMessage =
+    "Olá! Conheci a Vi Sim pelo site e gostaria de conhecer os modelos disponíveis.";
+
+
+document.getElementById("headerWhatsapp").href =
+    whatsapp(generalMessage);
+
+
+document.getElementById("manifestoWhatsapp").href =
+    whatsapp(generalMessage);
+
+
+document.getElementById("finalWhatsapp").href =
+    whatsapp(generalMessage);
+
+
+document.getElementById("footerWhatsapp").href =
+    whatsapp(generalMessage);
+
+
+/* =========================================================
+   HEADER SCROLL
+========================================================= */
+
+const header =
+    document.getElementById("header");
+
+
+window.addEventListener("scroll", () => {
+
+    if (window.scrollY > 80) {
+
+        header.classList.add("scrolled");
+
+    } else {
+
+        header.classList.remove("scrolled");
+
+    }
+
+});
+
+
+/* =========================================================
+   CURSOR
+========================================================= */
+
+const cursor =
+    document.querySelector(".cursor");
+
+
+document.addEventListener("mousemove", event => {
+
+    cursor.style.left =
+        event.clientX + "px";
+
+    cursor.style.top =
+        event.clientY + "px";
+
+});
+
+
+const interactive =
+    document.querySelectorAll("a, button, .product, .choice-card");
+
+
+interactive.forEach(element => {
+
+    element.addEventListener("mouseenter", () => {
+
+        cursor.classList.add("big");
+
+    });
+
+
+    element.addEventListener("mouseleave", () => {
+
+        cursor.classList.remove("big");
+
+    });
+
+});
+
+
+/* =========================================================
+   MODAL PRODUTOS
+========================================================= */
+
+const modal =
+    document.getElementById("modal");
+
+
+const modalImage =
+    document.getElementById("modalImage");
+
+
+const modalTitle =
+    document.getElementById("modalTitle");
+
+
+const modalCategory =
+    document.getElementById("modalCategory");
+
+
+const modalDescription =
+    document.getElementById("modalDescription");
+
+
+const modalWhatsapp =
+    document.getElementById("modalWhatsapp");
+
+
+document.querySelectorAll(".product").forEach(product => {
+
+
+    product.addEventListener("click", () => {
+
+
+        const image =
+            product.querySelector("img").src;
+
+
+        const name =
+            product.dataset.name;
+
+
+        const code =
+            product.dataset.code;
+
+
+        const category =
+            product.dataset.category;
+
+
+        const description =
+            product.dataset.description;
+
+
+        modalImage.src =
+            image;
+
+
+        modalTitle.textContent =
+            name;
+
+
+        modalCategory.textContent =
+            `${category} · ${code}`;
+
+
+        modalDescription.textContent =
+            description;
+
+
+        modalWhatsapp.href =
+            whatsapp(
+                `Olá! Vi o modelo ${name} (${code}) no site da Vi Sim e gostaria de saber o valor e a disponibilidade.`
+            );
+
+
+        modal.classList.add("active");
+
+
+        document.body.style.overflow =
+            "hidden";
+
+
+    });
+
+
+});
+
+
+/* =========================================================
+   FECHAR MODAL
+========================================================= */
+
+document
+    .getElementById("modalClose")
+    .addEventListener("click", closeModal);
+
+
+modal.addEventListener("click", event => {
+
+    if (event.target === modal) {
+
+        closeModal();
+
+    }
+
+});
+
+
+document.addEventListener("keydown", event => {
+
+    if (event.key === "Escape") {
+
+        closeModal();
+
+    }
+
+});
+
+
+function closeModal() {
+
+    modal.classList.remove("active");
+
+    document.body.style.overflow = "";
+
+}
+
+
+/* =========================================================
+   FILTRO GRAU / SOL
+========================================================= */
+
+document.querySelectorAll(".choice-card")
+.forEach(card => {
+
+    card.addEventListener("click", () => {
+
+        const category =
+            card.dataset.category;
+
+        sessionStorage.setItem(
+            "viSimCategory",
+            category
+        );
+
+    });
+
+});
+
+
+/* =========================================================
+   FILTRO AO CHEGAR NA COLEÇÃO
+========================================================= */
+
+window.addEventListener("load", () => {
+
+    const category =
+        sessionStorage.getItem("viSimCategory");
+
+
+    if (!category) return;
+
+
+    const products =
+        document.querySelectorAll(".product");
+
+
+    products.forEach(product => {
+
+        const productCategory =
+            product.dataset.category;
+
+
+        if (
+            category === "grau" &&
+            productCategory !== "Óculos de Grau"
+        ) {
+
+            product.style.display = "none";
+
+        }
+
+
+        if (
+            category === "sol" &&
+            productCategory !== "Óculos de Sol"
+        ) {
+
+            product.style.display = "none";
+
+        }
+
+    });
+
+
+    sessionStorage.removeItem("viSimCategory");
+
+});
+
+/* =========================================================
+   HERO — TROCA AUTOMÁTICA DAS IMAGENS
+========================================================= */
+
+(function () {
+
+    const heroSlides = document.querySelectorAll(".hero-slide");
+
+    if (!heroSlides.length) return;
+
+    let currentSlide = 0;
+
+    // Garante que apenas a primeira imagem comece visível
+    heroSlides.forEach((slide, index) => {
+        slide.classList.toggle("active", index === 0);
+    });
+
+    function nextHeroSlide() {
+
+        heroSlides[currentSlide].classList.remove("active");
+
+        currentSlide = (currentSlide + 1) % heroSlides.length;
+
+        heroSlides[currentSlide].classList.add("active");
+    }
+
+    setInterval(nextHeroSlide, 5000);
+
+})();
+
+
+/* =========================================================
+   CARROSSEL DA COLEÇÃO — MOBILE
+========================================================= */
+
+const productsCarousel =
+    document.querySelector(".products-carousel");
+
+const productsContainer =
+    document.getElementById("products");
+
+const productsPrev =
+    document.querySelector(".products-arrow-prev");
+
+const productsNext =
+    document.querySelector(".products-arrow-next");
+
+
+if (
+    productsCarousel &&
+    productsContainer &&
+    productsPrev &&
+    productsNext
+) {
+
+    function moveProducts(direction) {
+
+        const product =
+            productsContainer.querySelector(".product");
+
+        if (!product) return;
+
+        const gap = 16;
+
+        const slideWidth =
+            product.offsetWidth + gap;
+
+        productsContainer.scrollBy({
+            left: slideWidth * direction,
+            behavior: "smooth"
+        });
+
+    }
+
+
+    productsPrev.addEventListener("click", () => {
+
+        moveProducts(-1);
+
+    });
+
+
+    productsNext.addEventListener("click", () => {
+
+        moveProducts(1);
+
+    });
+
+}
+
+
+
+</script>
+
+<script>
+(function () {
+
+    const slides = document.querySelectorAll(".hero-slide");
+
+    if (slides.length < 2) return;
+
+    let current = 0;
+
+    // Garante que somente a primeira imagem comece ativa
+    slides.forEach((slide, index) => {
+        slide.classList.toggle("active", index === 0);
+    });
+
+    setInterval(function () {
+
+        slides[current].classList.remove("active");
+
+        current = (current + 1) % slides.length;
+
+        slides[current].classList.add("active");
+
+    }, 5000);
+
+})();
+</script>
+
+</body>
+</html>
